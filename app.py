@@ -191,7 +191,7 @@ def main():
 
     with col1:
         st.subheader("Segmentación SLIC")
-        st.image(mapa_colores, channels="RGB", use_container_width=True)
+        st.image(Image.fromarray(mapa_colores), use_container_width=True)
         st.markdown("<div style='display:flex; gap:12px; align-items:center; margin-top:8px;'>"
                     "<span style='width:14px; height:14px; background:#00ff00; display:inline-block; border-radius:50%;'></span> Piel  "
                     "<span style='width:14px; height:14px; background:#ff0000; display:inline-block; border-radius:50%;'></span> Lesión  "
@@ -200,14 +200,14 @@ def main():
 
     with col2:
         st.subheader("CNN SIN SLIC (baseline)")
-        st.image(img_rgb, channels="RGB", use_container_width=True)
+        st.image(Image.fromarray(img_rgb), use_container_width=True)
         st.markdown(f"**Clase predicha:** {CLASES_UI[CLASES[pred_baseline]]}")
         st.markdown(f"**Probabilidad:** {probs_baseline[pred_baseline]:.2%}")
         mostrar_barras_probabilidades(probs_baseline)
 
     with col3:
         st.subheader("CNN CON SLIC (propuesto)")
-        st.image(imagen_limpia_rgb, channels="RGB", use_container_width=True)
+        st.image(Image.fromarray(imagen_limpia_rgb), use_container_width=True)
         st.markdown(f"**Clase predicha:** {CLASES_UI[CLASES[pred_slic]]}")
         st.markdown(f"**Probabilidad:** {probs_slic[pred_slic]:.2%}")
         mostrar_barras_probabilidades(probs_slic)
